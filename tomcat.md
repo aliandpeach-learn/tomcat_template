@@ -1,5 +1,5 @@
 # 以下脚本用于生成TOMCAT实例
- set "CATALINA_BASE=%cd%"  
- set "CATALINA_HOME=tomcat_path"  
- set "EXECUTABLE=%CATALINA_HOME%\bin\catalina.bat"  
- call %EXECUTABLE%" start 
+set "CATALINA_BASE=%cd%"  
+set "CATALINA_HOME=D:\idea_workspace\development_tools\tomcat\apache-tomcat-8.0.45_https"  
+set "EXECUTABLE=%CATALINA_HOME%\bin\catalina.bat"  
+call "%EXECUTABLE%" start  
