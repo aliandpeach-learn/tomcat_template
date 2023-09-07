@@ -66,6 +66,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
+	<!--
     <Connector port="22020" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="65532" />
@@ -74,6 +75,35 @@
                clientAuth="false" sslProtocol="TLS" keystoreType="JKS" 
 			   keystoreFile="D:\idea_workspace\development_tools\cert\actrual\website_a.jks" keystorePass="Admin@123" 
 			   keyPass="Admin@1234" />
+	-->		   
+			   
+    <Connector executor="tomcatThreadPool"
+	   port="80" protocol="org.apache.coyote.http11.Http11NioProtocol"
+	   connectionTimeout="8000"
+	   URIEncoding="UTF-8"
+	   enableLookups="false"
+	   allowTrace="false"
+	   acceptCount="100"
+	   maxThreads="5000"
+	   maxPostSize="-1"
+	   redirectPort="5533"
+	   server=" " />
+				   
+	<Connector port="5533" protocol="org.apache.coyote.http11.Http11NioProtocol"
+	   SSLEnabled="true"
+	   maxThreads="500" scheme="https" secure="true"
+	   URIEncoding="UTF-8"
+	   connectionTimeout="8000"
+	   clientAuth="want"
+	   allowTrace="false"
+	   keystoreFile="D:\idea_workspace\development_tools\cert\actrual\website.ks"
+	   keystorePass="Admin@123" keyPass="Admin@1234"
+	   truststoreFile="D:\idea_workspace\development_tools\cert\actrual\website.ts"
+	   truststorePass="Admin@123"
+	   ciphers="TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256"
+	   sslProtocol="TLS" sslEnabledProtocols="TLSv1.2"
+	   server=" "
+	/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -140,7 +170,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="localhost_access_log" suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
-		<!-- <Context path="/website" docBase="D:\idea_workspace\development_tools\tomcat\pikaqiu" /> -->
+
       </Host>
     </Engine>
   </Service>
